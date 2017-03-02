@@ -3,6 +3,8 @@ var expect = require('chai').expect;
 var word = require('./index');
 
 describe('Sanitize', function () {
+
+	// use it.only to run only this one, and it.skip to skip this one
 	it('returns lowercase of a string', function(){
 		var inputWord = 'HELLO WORLD';
 		var outputWord = word.sanitize(inputWord);
