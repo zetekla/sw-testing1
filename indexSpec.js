@@ -1,14 +1,22 @@
 var chai = require('chai')
 var expect = require('chai').expect;
+var word = require('./index');
 
 describe('Sanitize', function () {
 	it('returns lowercase of a string', function(){
-		var word = 'hello world';
-		expect(word).to.equal('hello world');
-		expect(word).to.not.equal('HELLO WORLD');
-		expect(word).to.be.a('string');
-		expect(word).to.not.be.a('number');
-		expect(word).to.contain('hello');
+		var inputWord = 'HELLO WORLD';
+		var outputWord = word.sanitize(inputWord);
+
+		expect(outputWord).to.equal('hello world');
+		expect(outputWord).to.not.equal('HELLO WORLD');
+		expect(outputWord).to.be.a('string');
+		expect(outputWord).to.not.be.a('number');
+		expect(outputWord).to.contain('hello');
 	})
-	it('remove any hyphen')
+	it('remove any hyphen', function(){
+		var inputWord = 'HELLO-WORLD';
+		var outputWord = word.sanitize(inputWord);
+
+		expect(outputWord).to.equal('hello world');
+	});
 })
